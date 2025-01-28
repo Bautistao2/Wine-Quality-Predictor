@@ -39,11 +39,12 @@ jobs:
     needs: test
 
     steps:
+      # 1. Clonar el repositorio
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Streamlit Cloud
+      # 2. Desplegar la aplicación con Streamlit
+      - name: Deploy to Streamlit
+        run: streamlit run app.py
         env:
           STREAMLIT_AUTH_TOKEN: ${{ secrets.STREAMLIT_AUTH_TOKEN }}
-        run: |
-          streamlit run app.py
